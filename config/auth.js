@@ -14,7 +14,7 @@ module.exports = function(req, res, next) {
         return next();
       } else {
          // If invalid token, err will be set
-    
+        req.user = decoded.user 
         return next(); // passes the req object to the next place in the middleware chain!
       }
     });
