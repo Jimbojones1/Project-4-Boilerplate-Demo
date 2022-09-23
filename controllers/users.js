@@ -80,7 +80,7 @@ async function login(req, res) {
       }
     });
   } catch (err) {
-    return res.status(401).json({err: 'error message');
+    return res.status(401).json({err: 'error message'});
   }
 }
 
