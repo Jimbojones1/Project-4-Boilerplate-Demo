@@ -50,13 +50,13 @@ async function signup(req, res) {
           .status(423)
           .json({
             errorMessage: err,
-            error: `${identifyKeyInMongooseValidationError(
+            err: `${identifyKeyInMongooseValidationError(
               err.message
             )} Already taken!`,
           });
       } else {
         res.status(500).json({
-          error: err,
+          err: err,
           message: "Internal Server Error, Please try again",
         });
       }
@@ -80,7 +80,7 @@ async function login(req, res) {
       }
     });
   } catch (err) {
-    return res.status(401).json(err);
+    return res.status(401).json({err: 'error message');
   }
 }
 
