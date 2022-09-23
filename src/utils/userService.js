@@ -13,7 +13,10 @@ function signup(user) {
   .then(res => {
     if (res.ok) return res.json();
     // Probably a duplicate email
-    throw new Error('Error from getProfile Request, check the server terminal!')
+    return res.json().then(response => {
+      console.log(response)
+      throw new Error(response.err)
+    })
   })
   // Parameter destructuring!
   .then(({token}) => tokenService.setToken(token));
@@ -40,7 +43,10 @@ function login(creds) {
   .then(res => {
     // Valid login if we have a status of 2xx (res.ok)
     if (res.ok) return res.json();
-    throw new Error('Bad Credentials!, Check your server terminal');
+    return res.json().then(response => {
+      console.log(response)
+      throw new Error(response.err)
+    })
   })
   .then(({token}) => tokenService.setToken(token));
 }
