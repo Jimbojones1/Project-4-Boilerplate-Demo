@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.DATABASE_URL,
-  { useNewUrlParser: true,
-    useUnifiedTopology: true,
+  'mongodb://localhost:27017/pupstagram-711'// < replace with your database name!
 
-  }
 );
 
 const db = mongoose.connection;
